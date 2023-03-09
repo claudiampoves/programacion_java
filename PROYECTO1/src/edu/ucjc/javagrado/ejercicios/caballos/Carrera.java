@@ -1,43 +1,77 @@
 package edu.ucjc.javagrado.ejercicios.caballos;
 
+
 public class Carrera {
 	private String nombreCarrera;
-	private double distancia;
-	private int caballos;
-	private String cajon [];
-	public Carrera(String nombreCarrera, double distancia, int caballos, String[] cajon) {
+	private int distancia;
+	private Caballo[] cajon;
+	
+	public Carrera(String nombreCarrera, int distancia, Caballo[] cajon) {
 		super();
 		this.nombreCarrera = nombreCarrera;
 		this.distancia = distancia;
-		this.caballos = caballos;
 		this.cajon = cajon;
 	}
+
+
+
 	public String getNombreCarrera() {
 		return nombreCarrera;
 	}
+
+
+
 	public void setNombreCarrera(String nombreCarrera) {
 		this.nombreCarrera = nombreCarrera;
 	}
-	public double getDistancia() {
+
+
+
+	public int getDistancia() {
 		return distancia;
 	}
-	public void setDistancia(double distancia) {
+
+
+
+	public void setDistancia(int distancia) {
 		this.distancia = distancia;
 	}
-	public int getCaballos() {
-		return caballos;
-	}
-	public void setCaballos(int caballos) {
-		this.caballos = caballos;
-	}
-	public String[] getCajon() {
+
+
+
+	public Caballo[] getCajon() {
 		return cajon;
 	}
-	public void setCajon(String[] cajon) {
+
+
+
+	public void setCajon(Caballo[] cajon) {
 		this.cajon = cajon;
 	}
+
+	public Caballo iniciarCarrera() {
+		System.out.println("Iniciando la carrera " + this.getNombreCarrera()
+		+" con una distancia de "+this.distancia +" metros");
+		boolean hayCaballoGanador = false;
+		//Creo variable caballo ganador que no apunta a nada.
+		Caballo caballoGanador = null;
 	
-	public static void iniciarCarrera() {
-		
+		while (!hayCaballoGanador) {
+			for (Caballo caballo : cajon) {
+			caballo.correr();
+			//Si el avance que lleva el caballo es mayor 
+			//que la distancia de la carrera habrá ganado 
+				if (caballo.getAvance() >= this.distancia) {
+				hayCaballoGanador = true;
+				//Si hay caballo ganador que apunte al objeto caballo
+				caballoGanador = caballo;
+				//System.out.println("Ha ganado el caballo " + caballo.getNombre() + " con dorsal "+ caballo.getDorsal());
+				break;
+				}
+			}
+	
+		}
+		//Devuelve el caballo ganador
+		return caballoGanador;
 	}
 }

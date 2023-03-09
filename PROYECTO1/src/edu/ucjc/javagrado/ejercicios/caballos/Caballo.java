@@ -7,6 +7,7 @@ public class Caballo {
 	private double peso;
 	private int edad;
 	private int avance;
+	
 	public Caballo(String nombre, int dorsal, double velocidad, double peso, int edad) {
 		super();
 		this.nombre = nombre;
